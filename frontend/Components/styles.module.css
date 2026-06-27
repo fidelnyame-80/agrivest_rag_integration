@@ -1,0 +1,258 @@
+.valueSection {
+  --forest: #28520b;
+  --lime: #d8ff8e;
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: clamp(4.5rem, 8vw, 7.5rem) clamp(1.25rem, 4vw, 4.5rem) 3rem;
+  background: #fafbf8;
+  color: #10140d;
+}
+
+.valueSection::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background-image: radial-gradient(#28520b18 0.7px, transparent 0.7px);
+  background-size: 17px 17px;
+  mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 75%, transparent);
+}
+
+.intro {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--forest);
+  font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.intro h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3.25rem, 7.2vw, 7.8rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.86;
+}
+
+.intro h2 span {
+  color: var(--forest);
+  font-weight: 700;
+}
+
+.offerStage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(18rem, 31vw, 31rem) minmax(0, 1fr);
+  align-items: center;
+  width: min(100%, 86rem);
+  min-height: clamp(25rem, 42vw, 38rem);
+  margin: 0 auto;
+}
+
+.copyPanel {
+  position: relative;
+  z-index: 1;
+  min-height: clamp(20rem, 29vw, 28rem);
+  padding: clamp(2rem, 4vw, 4.25rem);
+  background: var(--lime);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.copyPanelLeft {
+  margin-right: -4.5rem;
+  padding-right: clamp(5rem, 8vw, 8.5rem);
+  border-radius: 18rem 2.5rem 2.5rem 18rem;
+}
+
+.copyPanelRight {
+  margin-left: -4.5rem;
+  padding-left: clamp(5rem, 8vw, 8.5rem);
+  border-radius: 2.5rem 18rem 18rem 2.5rem;
+}
+
+.panelNumber {
+  width: fit-content;
+  margin: 0 0 1.25rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--forest);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.copyPanel h3 {
+  max-width: 10ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.94;
+}
+
+.panelBody {
+  max-width: 27rem;
+  margin: 1.25rem 0 0;
+  color: rgba(16, 20, 13, 0.78);
+  font-size: clamp(0.96rem, 1.15vw, 1.08rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.45;
+}
+
+.tomatoWrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  aspect-ratio: 1;
+  isolation: isolate;
+}
+
+.mobileTomatoCanvas {
+  display: none;
+}
+
+.backShadow {
+  position: absolute;
+  z-index: -1;
+  inset: 12% 5% 8%;
+  border-radius: 50%;
+  background: #163d08;
+  box-shadow: 0 1.7rem 3.5rem #142b0a47;
+  transform: translate(5%, 2%) scale(0.88);
+}
+
+.backShadow::after {
+  position: absolute;
+  inset: 10%;
+  content: "";
+  border: 1px solid #ffffff52;
+  border-radius: inherit;
+}
+
+.closingLine {
+  position: relative;
+  z-index: 2;
+  margin: clamp(2rem, 4vw, 3.5rem) auto 0;
+  text-align: center;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.closingLine span {
+  color: var(--forest);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .valueSection {
+    min-height: auto;
+    padding-block: 4rem;
+  }
+
+  .intro {
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .intro h2 {
+    font-size: clamp(3rem, 17vw, 4.4rem);
+    line-height: 0.88;
+  }
+
+  .offerStage {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    min-height: auto;
+    padding-top: 0;
+  }
+
+  .tomatoWrap {
+    display: block;
+    order: -1;
+    width: min(74vw, 17rem);
+    margin: -0.5rem auto 0.5rem;
+  }
+
+  .tomatoWrap .backShadow {
+    inset: 10%;
+    transform: none;
+    box-shadow: 0 1.2rem 2.5rem #142b0a38;
+  }
+
+  .mobileTomatoCanvas {
+    display: block;
+    position: absolute !important;
+    inset: -9%;
+    z-index: 1;
+  }
+
+  .copyPanel {
+    min-height: auto;
+    padding: 1.75rem;
+  }
+
+  .copyPanelLeft {
+    margin-right: 0;
+    border-radius: 1.5rem 5rem 1.5rem 1.5rem;
+  }
+
+  .copyPanelRight {
+    margin-left: 0;
+    min-height: 15rem;
+    border-radius: 1.5rem 1.5rem 5rem 1.5rem;
+  }
+
+  .copyPanel h3 {
+    max-width: 13ch;
+    font-size: clamp(2.25rem, 11vw, 3.1rem);
+  }
+}
+
+@media (max-width: 620px) {
+  .valueSection {
+    padding-inline: 0.9rem;
+  }
+
+  .copyPanel {
+    min-height: auto;
+    padding: 2rem 2.1rem;
+  }
+
+  .copyPanelLeft,
+  .copyPanelRight {
+    margin: 0;
+    border-radius: 2rem;
+  }
+
+  .copyPanelLeft {
+    border-top-right-radius: 9rem;
+  }
+
+  .copyPanelRight {
+    border-bottom-left-radius: 9rem;
+    min-height: 15.75rem;
+  }
+
+  .copyPanel h3 {
+    max-width: 13ch;
+  }
+}

@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Sentient", Georgia, serif;
+  --ink: #10140d;
+  --muted-ink: rgba(16, 20, 13, 0.66);
+  --forest: #28520b;
+  --lime: #d8ff8e;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  background: #fafbf8;
+  color: var(--ink);
+  cursor: none;
+}
+
+::selection {
+  background: var(--lime);
+  color: var(--forest);
+}
+
+h1,
+h2,
+h3,
+p {
+  text-wrap: pretty;
+}
+
+a,
+button,
+summary {
+  cursor: none;
+}

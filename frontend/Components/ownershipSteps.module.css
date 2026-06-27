@@ -1,0 +1,151 @@
+.section {
+  --line-color: rgba(40, 82, 11, 0.2);
+  --muted: rgba(16, 20, 13, 0.64);
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.9fr) minmax(32rem, 1.1fr);
+  align-items: center;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: clamp(5rem, 8vw, 8rem) clamp(1.5rem, 6vw, 6.5rem);
+  background: #fafbf8;
+  color: #10140d;
+}
+
+.section::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  opacity: 0.22;
+  background-image: radial-gradient(currentColor 0.6px, transparent 0.6px);
+  background-size: 18px 18px;
+  mask-image: linear-gradient(90deg, #000, transparent 55%);
+}
+
+.tomatoField {
+  position: relative;
+  min-height: 36rem;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 45rem);
+  justify-self: end;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: #9cdb57;
+  font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.content > h2 {
+  max-width: 10ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3.6rem, 7vw, 7.7rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.84;
+}
+
+.subhead {
+  margin: 1.2rem 0 clamp(2rem, 5vw, 4.25rem);
+  color: var(--muted);
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+}
+
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line-color);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 4.25rem minmax(8rem, 0.75fr) minmax(12rem, 1.25fr);
+  gap: clamp(1rem, 2vw, 2rem);
+  align-items: center;
+  min-height: 6rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line-color);
+}
+
+.number {
+  color: #9cdb57;
+  font-size: clamp(1.85rem, 2.7vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.step h3,
+.step p {
+  margin: 0;
+}
+
+.step h3 {
+  font-size: clamp(1.05rem, 1.35vw, 1.24rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: clamp(0.88rem, 1vw, 0.98rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .section {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    align-content: start;
+    padding: 4rem 1.2rem;
+    background: #0d190c;
+    color: #f5f7f1;
+    --line-color: rgba(216, 255, 142, 0.22);
+    --muted: rgba(245, 247, 241, 0.62);
+  }
+
+  .tomatoField {
+    display: none;
+  }
+
+  .content {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 620px) {
+  .section {
+    padding: 4rem 1.2rem;
+  }
+
+  .content > h2 {
+    font-size: clamp(3.1rem, 16vw, 5rem);
+  }
+
+  .step {
+    grid-template-columns: 3rem 1fr;
+    gap: 0.65rem 1rem;
+  }
+
+  .step p {
+    grid-column: 2;
+  }
+}

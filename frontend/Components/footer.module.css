@@ -1,0 +1,82 @@
+.footer {
+  position: relative;
+  z-index: 8;
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 5vw, 5.5rem) 1.5rem;
+  background: #0d190c;
+  color: #f5f7f1;
+}
+
+.top,
+.bottom {
+  width: min(100%, 84rem);
+  margin-inline: auto;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.35fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+  padding-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.brand {
+  margin: 0;
+  color: #d8ff8e;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.top h2 {
+  max-width: 12ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 10.5rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 0.8;
+}
+
+.bottom {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(216, 255, 142, 0.22);
+  color: rgba(245, 247, 241, 0.62);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.bottom p {
+  margin: 0;
+}
+
+.bottom nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.bottom a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.bottom a:hover {
+  color: #d8ff8e;
+}
+
+@media (max-width: 800px) {
+  .top {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom {
+    align-items: flex-start;
+    flex-direction: column-reverse;
+  }
+}

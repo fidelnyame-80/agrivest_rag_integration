@@ -1,0 +1,66 @@
+.journey {
+  position: relative;
+}
+
+.scene {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100svh;
+  margin-bottom: -100svh;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.scene canvas {
+  position: relative;
+  z-index: 2;
+}
+
+.ownershipOrbit {
+  position: absolute;
+  top: 50%;
+  left: 23%;
+  z-index: 1;
+  width: clamp(18rem, 31vw, 31rem);
+  aspect-ratio: 1;
+  visibility: hidden;
+  border: 1px solid rgba(216, 255, 142, 0.22);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+
+.ownershipOrbit::before,
+.ownershipOrbit::after {
+  position: absolute;
+  content: "";
+  border: 1px solid rgba(216, 255, 142, 0.22);
+  border-radius: inherit;
+}
+
+.ownershipOrbit::before {
+  inset: 9%;
+}
+
+.ownershipOrbit::after {
+  inset: 21%;
+}
+
+.sections {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .scene {
+    display: none;
+  }
+
+  .ownershipOrbit {
+    top: 63%;
+    left: 50%;
+    width: min(72vw, 25rem);
+  }
+}
