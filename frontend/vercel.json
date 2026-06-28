@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "https://agrivest-rag-integration.onrender.com/$1" }
+  ]
+}
