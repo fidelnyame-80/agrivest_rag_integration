@@ -1,5 +1,6 @@
-import { readdir, readFile } from "node:fs/promises";
+import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { PDFParse } from "pdf-parse";
 
 export interface ExtractedDocument {
@@ -7,17 +8,38 @@ export interface ExtractedDocument {
   text: string;
 }
 
-const DOCUMENTS_DIR = path.resolve(process.cwd(), "documents");
+const SERVICE_DIR = path.dirname(fileURLToPath(import.meta.url));
+const DOCUMENTS_DIR_CANDIDATES = [
+  path.resolve(process.cwd(), "documents"),
+  path.resolve(process.cwd(), "backend", "documents"),
+  path.resolve(SERVICE_DIR, "../../documents"),
+];
+
+async function getDocumentsDir(): Promise<string> {
+  for (const documentsDir of DOCUMENTS_DIR_CANDIDATES) {
+    try {
+      await access(documentsDir);
+      return documentsDir;
+    } catch {
+      // Try the next deployment layout.
+    }
+  }
+
+  throw new Error(
+    `Documents directory not found. Checked: ${DOCUMENTS_DIR_CANDIDATES.join(", ")}`,
+  );
+}
 
 export async function extractPdfDocuments(): Promise<ExtractedDocument[]> {
-  const entries = await readdir(DOCUMENTS_DIR, { withFileTypes: true });
+  const documentsDir = await getDocumentsDir();
+  const entries = await readdir(documentsDir, { withFileTypes: true });
   const pdfFiles = entries
     .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".pdf"))
     .map((entry) => entry.name);
 
   const documents = await Promise.all(
     pdfFiles.map(async (fileName) => {
-      const filePath = path.join(DOCUMENTS_DIR, fileName);
+      const filePath = path.join(documentsDir, fileName);
       const data = await readFile(filePath);
       const parser = new PDFParse({ data });
 
